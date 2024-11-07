@@ -4,7 +4,7 @@
 
 This project builds a YouTube-based Q&A chatbot using Gradio, LangChain, Pinecone, and OpenAI. The chatbot provides answers about Accenture's quarterly earnings, projects, revenue, and employee details, leveraging both internal document vectors and web search for responses. Users can update the information by adding new earnings reports to the dataset
 
-Table of Contents
+### Table of Contents
 
    - Installation
    - Environment Setup
@@ -15,7 +15,7 @@ Table of Contents
    - Usage
    - Future Improvements
 
-Environment Setup
+### Environment Setup
 
 1. Add your environment variables by setting up a .env file or using prompts in the script:
    - OPENAI_API_KEY: API key for OpenAI.
