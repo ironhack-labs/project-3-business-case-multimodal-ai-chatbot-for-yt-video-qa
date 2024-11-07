@@ -1,13 +1,29 @@
 ![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
 
-# Project III | Business Case: Building a Multimodal AI ChatBot for YouTube Video QA
+# Final Project | Accenture Q&A Chatbot
 
-Building a chatbot that can translate YouTube videos into text and allow for natural language querying offers several compelling business cases.
+This project builds a YouTube-based Q&A chatbot using Gradio, LangChain, Pinecone, and OpenAI. The chatbot provides answers about Accenture's quarterly earnings, projects, revenue, and employee details, leveraging both internal document vectors and web search for responses. Users can update the information by adding new earnings reports to the dataset
 
-- Firstly, it improves accessibility for users with hearing impairments or those who prefer reading over watching videos, thereby broadening the audience reach and enhancing brand reputation.
-- Secondly, it enables efficient indexing and searching of video content, allowing users to quickly find specific information within videos, which is particularly useful for educational content and tutorials.
-- Thirdly, it improves customer support by leveraging existing video content to provide instant, accurate responses to customer queries, thus reducing support costs and improving response times.
-- Additionally, it serves educational and training purposes by enhancing the learning experience, enabling easy querying and access to specific segments of instructional videos. From an SEO and content marketing perspective, video transcripts can significantly boost website traffic and video discoverability by improving search engine indexing. Lastly, supporting multiple languages allows the chatbot to cater to a global audience, expanding market reach and enhancing user engagement.
+Table of Contents
+
+   - Installation
+   - Environment Setup
+   - Project Architecture
+   - Data Workflow
+   - Query Handling
+   - Interactive Chatbot with Gradio
+   - Usage
+   - Future Improvements
+
+Environment Setup
+
+1. Add your environment variables by setting up a .env file or using prompts in the script:
+   - OPENAI_API_KEY: API key for OpenAI.
+   - LANGCHAIN_API_KEY: API key for LangChain.
+   - PINECONE_API_KEY: API key for Pinecone.
+   - SERPAPI_API_KEY: API key for SerpAPI.
+2. The script will securely request these keys if not already set in .env.
+
 
 ### Project Overview
 
