@@ -34,6 +34,8 @@ from langchain_community.chat_models import ChatOpenAI
 from langchain.vectorstores import Pinecone as LangChainPinecone
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 # Load Environment Variables
 load_dotenv(find_dotenv())
@@ -310,6 +312,25 @@ Now, respond to the question:
 {user_query}
 """
 
+# Define a prompt template with placeholder for messages
+prompt_template = ChatPromptTemplate.from_messages(
+    [
+        SystemMessage(
+            content="You are a helpful assistant specializing in Accenture's financial data. Answer questions accurately."
+        ),
+        MessagesPlaceholder(variable_name="messages"),
+    ]
+)
+
+chat_history = []
+
+def add_to_chat_history(human_message, ai_message=None):
+    """Add user and AI responses to the chat history."""
+    chat_history.append(HumanMessage(content=human_message))
+    if ai_message:
+        chat_history.append(AIMessage(content=ai_message))
+
+
 # Define the ReAct agent with the custom prompt in each tool
 react_agent = initialize_agent(
     tools=[vector_store_tool, web_search_tool],
@@ -318,26 +339,30 @@ react_agent = initialize_agent(
     memory=memory,  # Integrate conversation memory
     verbose=True,
     max_iterations=5,  # Restrict maximum depth to avoid infinite loops
-    handle_parsing_errors=True,  # Retry on output parsing errors
+    handle_parsing_errors=True  # Retry on output parsing errors
 )
 
 
 # Main function to handle the query using the ReAct agent with the custom prompt
 def handle_query_with_agent(query):
-    """Format the query with the agent's prompt"""
+    # Format the query with the agent's prompt
     formatted_prompt = agent_prompt.format(user_query=query)
+    
+    # Add the user query to the chat history
+    add_to_chat_history(query)
 
     # Use the prompt in the agent invocation
     try:
         response = react_agent({"input": formatted_prompt})
         # If a valid answer is provided, return it
         if "output" in response:
-            return response["output"]
+            ai_message = response["output"]
+            add_to_chat_history(query, ai_message)
+            return ai_message
+            #return response["output"]
         else:
             # Fallback message if no answer found within the max iterations
-            return (
-                "I don't know. Unable to find the answer within the provided context."
-            )
+            return "I don't know. Unable to find the answer within the provided context."
     except Exception as e:
         # In case of unexpected errors, provide a helpful message
         return f"Error encountered: {str(e)}"
