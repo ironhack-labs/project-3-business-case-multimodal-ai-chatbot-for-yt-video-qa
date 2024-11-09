@@ -38,7 +38,7 @@ The chatbot uses the following architecture:
 
 ## Solution Architecture
 
-![Solution Architecture](solution architecture.png)
+![Solution Architecture](solution_architecture.png)
 
 - Data Retrieval: Combines a vector database (Pinecone) for structured data retrieval and SerpAPI for web search.
 - Routing: Uses LangChain's ReAct agent to dynamically route user questions to the appropriate source (either vector store or web search) using Tools.
