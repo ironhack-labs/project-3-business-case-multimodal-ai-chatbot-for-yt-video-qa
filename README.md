@@ -43,6 +43,7 @@ The chatbot uses the following architecture:
 
 ### Usage
 
+- use requirements.txt to install the necessary packages
 - Add video links to video_links.txt (one link per line).
 - Run the script to generate transcriptions, create embeddings, and set up the chatbot interface.
 - Interact with the chatbot by typing questions relevant to the video content.

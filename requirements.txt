@@ -1,0 +1,12 @@
+langchain
+langsmith
+langchain-community
+openai
+whisper
+pinecone-client
+gradio
+googlesearch
+serpapi
+python-dotenv
+yt-dlp
+imageio[ffmpeg]
