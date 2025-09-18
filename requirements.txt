@@ -1,0 +1,16 @@
+langchain
+langchain-openai
+langchain-chroma
+langchain-cohere
+langchain-community
+langsmith
+openai
+chromadb
+whisper
+yt-dlp
+deep-translator
+langdetect
+duckduckgo-search
+python-dotenv
+torch
+torchaudio
