@@ -1,0 +1,10 @@
+# API Keys
+OPENAI_API_KEY=your-openai-key
+COHERE_API_KEY=your-cohere-key
+LANGCHAIN_API_KEY=your-langsmith-key
+
+# LangSmith Project Name
+LANGCHAIN_PROJECT=Personal-Finance-Buddy
+
+# Enable LangSmith Tracing
+LANGCHAIN_TRACING_V2=true
